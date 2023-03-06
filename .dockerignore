@@ -1,0 +1,7 @@
+.env.example
+.git
+.scannerwork
+.gitignore
+docker-compose.yml
+Dockerfile
+Dockerfile.prod
