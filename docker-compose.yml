@@ -1,6 +1,7 @@
 version: '3'
 services:
   allgor-backend:
+    container_name: allgor-backend
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,3 +9,8 @@ services:
       - ./:/app
     ports:
       - $ALLGOR_PORT:$ALLGOR_PORT
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube
+    ports:
+      - 9000:9000
