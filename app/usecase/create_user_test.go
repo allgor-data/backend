@@ -48,3 +48,20 @@ func TestCreateUser_Validation(t *testing.T) {
 	assert.Error(t, err, "invalid e-mail")
 	assert.Assert(t, output == nil)
 }
+
+func TestCreateUser_ShortPassword(t *testing.T) {
+	r := repository.NewUserRepositoryInMemory()
+	usecase := NewCreateUserUsecase(r)
+
+	input := &CreateUserInputDTO{
+		Email:     "johndoe@example.com",
+		FirstName: "John",
+		LastName:  "Doe",
+		Password:  "1234567",
+	}
+
+	output, err := usecase.Execute(input)
+
+	assert.Error(t, err, "password length must be greater or equal than 8")
+	assert.Assert(t, output == nil)
+}
