@@ -8,7 +8,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/allgor-data/backend/graphql/generated"
+	"github.com/allgor-data/backend/app/api/graphql/generated"
 )
 
 // CreateTodo is the resolver for the createTodo field.

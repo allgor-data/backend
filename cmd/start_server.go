@@ -11,8 +11,8 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/allgor-data/backend/graphql/generated"
-	"github.com/allgor-data/backend/graphql/resolver"
+	"github.com/allgor-data/backend/app/api/graphql/generated"
+	"github.com/allgor-data/backend/app/api/graphql/resolver"
 	"github.com/rs/zerolog/log"
 )
 
