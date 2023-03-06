@@ -10,11 +10,21 @@ import (
 
 	"github.com/allgor-data/backend/app/api/graphql/generated"
 	"github.com/allgor-data/backend/app/dto"
+	"github.com/rs/zerolog/log"
 )
 
 // CreateUser is the resolver for the createUser field.
 func (r *mutationResolver) CreateUser(ctx context.Context, input dto.CreateUserInput) (*dto.CreateUserOutput, error) {
-	return r.CreateUserUsecase.Execute(&input)
+	log.Info().Str("email", input.Email).Msg("createUser mutation called")
+
+	output, err := r.CreateUserUsecase.Execute(&input)
+	if err != nil {
+		log.Err(err).Str("email", input.Email).Msg("failed to create user")
+		return nil, err
+	}
+
+	log.Info().Str("email", input.Email).Str("uid", output.UID).Msg("createUser mutation succeed")
+	return output, nil
 }
 
 // Users is the resolver for the users field.
