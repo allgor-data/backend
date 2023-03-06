@@ -49,46 +49,46 @@ func TestUser_SetPassword(t *testing.T) {
 
 func TestUser_IsValid_Email(t *testing.T) {
 	user := makeValidUser()
-	assert.NilError(t, user.IsValid())
+	assert.NilError(t, user.Validate())
 
 	user.Email = ""
-	assert.Error(t, user.IsValid(), "e-mail is required")
+	assert.Error(t, user.Validate(), "e-mail is required")
 
 	user.Email = "invalid_email"
-	assert.Error(t, user.IsValid(), "invalid e-mail")
+	assert.Error(t, user.Validate(), "invalid e-mail")
 }
 
 func TestUser_IsValid_FirstName(t *testing.T) {
 	user := makeValidUser()
-	assert.NilError(t, user.IsValid())
+	assert.NilError(t, user.Validate())
 
 	user.FirstName = ""
-	assert.Error(t, user.IsValid(), "first name is required")
+	assert.Error(t, user.Validate(), "first name is required")
 }
 
 func TestUser_IsValid_LastName(t *testing.T) {
 	user := makeValidUser()
-	assert.NilError(t, user.IsValid())
+	assert.NilError(t, user.Validate())
 
 	user.LastName = ""
-	assert.Error(t, user.IsValid(), "last name is required")
+	assert.Error(t, user.Validate(), "last name is required")
 }
 
 func TestUser_IsValid_Password(t *testing.T) {
 	user := makeValidUser()
-	assert.NilError(t, user.IsValid())
+	assert.NilError(t, user.Validate())
 
 	user.PasswordHash = ""
-	assert.Error(t, user.IsValid(), "password is not set")
+	assert.Error(t, user.Validate(), "password is not set")
 }
 
 func TestUser_IsValid_Role(t *testing.T) {
 	user := makeValidUser()
-	assert.NilError(t, user.IsValid())
+	assert.NilError(t, user.Validate())
 
 	user.Role = ""
-	assert.Error(t, user.IsValid(), "role is required")
+	assert.Error(t, user.Validate(), "role is required")
 
 	user.Role = "invalid_role"
-	assert.Error(t, user.IsValid(), "invalid role")
+	assert.Error(t, user.Validate(), "invalid role")
 }

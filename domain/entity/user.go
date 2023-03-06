@@ -32,7 +32,7 @@ func NewUser() *User {
 	}
 }
 
-func (u *User) IsValid() error {
+func (u *User) Validate() error {
 	err := u.validateEmail()
 	if err != nil {
 		return err

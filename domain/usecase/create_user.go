@@ -36,7 +36,7 @@ func (c *CreateUserUsecase) Execute(input *CreateUserInputDTO) (*CreateUserOutpu
 	user.LastName = input.LastName
 	user.SetPassword(input.Password)
 
-	err := user.IsValid()
+	err := user.Validate()
 	if err != nil {
 		return nil, err
 	}
