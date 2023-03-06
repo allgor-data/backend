@@ -14,4 +14,12 @@ FROM alpine:3.15
 
 COPY --from=builder /app/build /usr/bin
 
-CMD sh -c "allgor --port=$PORT --playground=$PLAYGROUND"
+RUN addgroup -S nonroot \
+  && adduser -S nonroot -G nonroot
+
+USER nonroot
+
+ENV ALLGOR_PLAYGROUND=false
+ENV ALLGOR_PORT=5000
+
+ENTRYPOINT ["allgor"]
