@@ -9,7 +9,7 @@ import (
 )
 
 func TestCreateUser(t *testing.T) {
-	r := repository.NewInMemoryUserRepository()
+	r := repository.NewUserRepositoryInMemory()
 	usecase := NewCreateUserUsecase(r)
 
 	input := &CreateUserInputDTO{
@@ -33,7 +33,7 @@ func TestCreateUser(t *testing.T) {
 }
 
 func TestCreateUser_Validation(t *testing.T) {
-	r := repository.NewInMemoryUserRepository()
+	r := repository.NewUserRepositoryInMemory()
 	usecase := NewCreateUserUsecase(r)
 
 	input := &CreateUserInputDTO{
