@@ -47,6 +47,17 @@ func TestUser_SetPassword(t *testing.T) {
 	assert.Assert(t, user.PasswordHash != "")
 }
 
+func TestUser_IsValid_UID(t *testing.T) {
+	user := makeValidUser()
+	assert.NilError(t, user.Validate())
+
+	user.UID = ""
+	assert.Error(t, user.Validate(), "uid is not set")
+
+	user.UID = "invalid_uid"
+	assert.Error(t, user.Validate(), "invalid uid")
+}
+
 func TestUser_IsValid_Email(t *testing.T) {
 	user := makeValidUser()
 	assert.NilError(t, user.Validate())
