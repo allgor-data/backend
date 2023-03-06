@@ -8,24 +8,24 @@ import (
 	"context"
 	"fmt"
 
-	graphqlgenerated "github.com/allgor-data/backend/graphql/generated"
+	"github.com/allgor-data/backend/graphql/generated"
 )
 
 // CreateTodo is the resolver for the createTodo field.
-func (r *mutationResolver) CreateTodo(ctx context.Context, input graphqlgenerated.NewTodo) (*graphqlgenerated.Todo, error) {
+func (r *mutationResolver) CreateTodo(ctx context.Context, input generated.NewTodo) (*generated.Todo, error) {
 	panic(fmt.Errorf("not implemented: CreateTodo - createTodo"))
 }
 
 // Todos is the resolver for the todos field.
-func (r *queryResolver) Todos(ctx context.Context) ([]*graphqlgenerated.Todo, error) {
+func (r *queryResolver) Todos(ctx context.Context) ([]*generated.Todo, error) {
 	panic(fmt.Errorf("not implemented: Todos - todos"))
 }
 
-// Mutation returns graphqlgenerated.MutationResolver implementation.
-func (r *Resolver) Mutation() graphqlgenerated.MutationResolver { return &mutationResolver{r} }
+// Mutation returns generated.MutationResolver implementation.
+func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
 
-// Query returns graphqlgenerated.QueryResolver implementation.
-func (r *Resolver) Query() graphqlgenerated.QueryResolver { return &queryResolver{r} }
+// Query returns generated.QueryResolver implementation.
+func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
 type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
