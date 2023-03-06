@@ -31,7 +31,7 @@ func startServer(port string, enablePlayground bool) error {
 	log.Info().Msg("Added GraphQL handler at /")
 
 	if enablePlayground {
-		svMux.Handle("/playground", playground.Handler("playground", "/playground"))
+		svMux.Handle("/playground", playground.Handler("playground", "/"))
 		log.Info().Msg("Added playground handler at /playground")
 	}
 
