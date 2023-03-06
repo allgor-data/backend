@@ -3,6 +3,7 @@ package usecase
 import (
 	"testing"
 
+	"github.com/allgor-data/backend/app/dto"
 	"github.com/allgor-data/backend/app/entity"
 	"github.com/allgor-data/backend/app/repository"
 	"gotest.tools/v3/assert"
@@ -12,7 +13,7 @@ func TestCreateUser(t *testing.T) {
 	r := repository.NewUserRepositoryInMemory()
 	usecase := NewCreateUserUsecase(r)
 
-	input := &CreateUserInputDTO{
+	input := &dto.CreateUserInput{
 		Email:     "johndoe@example.com",
 		FirstName: "John",
 		LastName:  "Doe",
@@ -36,7 +37,7 @@ func TestCreateUser_Validation(t *testing.T) {
 	r := repository.NewUserRepositoryInMemory()
 	usecase := NewCreateUserUsecase(r)
 
-	input := &CreateUserInputDTO{
+	input := &dto.CreateUserInput{
 		Email:     "invalid_email",
 		FirstName: "John",
 		LastName:  "Doe",
@@ -53,7 +54,7 @@ func TestCreateUser_ShortPassword(t *testing.T) {
 	r := repository.NewUserRepositoryInMemory()
 	usecase := NewCreateUserUsecase(r)
 
-	input := &CreateUserInputDTO{
+	input := &dto.CreateUserInput{
 		Email:     "johndoe@example.com",
 		FirstName: "John",
 		LastName:  "Doe",

@@ -17,6 +17,14 @@ input CreateUserInput {
   password: String!
 }
 
+type CreateUserOutput {
+  uid: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  role: String!
+}
+
 type Mutation {
-  createUser(input: CreateUserInput!): User!
+  createUser(input: CreateUserInput!): CreateUserOutput!
 }

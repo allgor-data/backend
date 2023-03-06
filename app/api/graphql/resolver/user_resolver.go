@@ -9,29 +9,12 @@ import (
 	"fmt"
 
 	"github.com/allgor-data/backend/app/api/graphql/generated"
-	"github.com/allgor-data/backend/app/usecase"
+	"github.com/allgor-data/backend/app/dto"
 )
 
 // CreateUser is the resolver for the createUser field.
-func (r *mutationResolver) CreateUser(ctx context.Context, input generated.CreateUserInput) (*generated.User, error) {
-	output, err := r.CreateUserUsecase.Execute(&usecase.CreateUserInputDTO{
-		Email:     input.Email,
-		FirstName: input.FirstName,
-		LastName:  input.LastName,
-		Password:  input.Password,
-	})
-
-	if err != nil {
-		return nil, err
-	}
-
-	return &generated.User{
-		UID:       output.UID,
-		Email:     output.Email,
-		FirstName: output.FirstName,
-		LastName:  output.LastName,
-		Role:      output.Role,
-	}, nil
+func (r *mutationResolver) CreateUser(ctx context.Context, input dto.CreateUserInput) (*dto.CreateUserOutput, error) {
+	return r.CreateUserUsecase.Execute(&input)
 }
 
 // Users is the resolver for the users field.

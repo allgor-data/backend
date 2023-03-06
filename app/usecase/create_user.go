@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"github.com/allgor-data/backend/app/dto"
 	"github.com/allgor-data/backend/app/entity"
 	"github.com/allgor-data/backend/app/repository"
 )
@@ -13,22 +14,7 @@ func NewCreateUserUsecase(r repository.UserRepository) *CreateUserUsecase {
 	return &CreateUserUsecase{r}
 }
 
-type CreateUserInputDTO struct {
-	Email     string
-	FirstName string
-	LastName  string
-	Password  string
-}
-
-type CreateUserOutputDTO struct {
-	UID       string
-	Email     string
-	FirstName string
-	LastName  string
-	Role      entity.UserRole
-}
-
-func (c *CreateUserUsecase) Execute(input *CreateUserInputDTO) (*CreateUserOutputDTO, error) {
+func (c *CreateUserUsecase) Execute(input *dto.CreateUserInput) (*dto.CreateUserOutput, error) {
 	user := entity.NewUser()
 
 	user.Email = input.Email
@@ -50,7 +36,7 @@ func (c *CreateUserUsecase) Execute(input *CreateUserInputDTO) (*CreateUserOutpu
 		return nil, err
 	}
 
-	output := &CreateUserOutputDTO{
+	output := &dto.CreateUserOutput{
 		UID:       user.UID,
 		Email:     user.Email,
 		FirstName: user.FirstName,

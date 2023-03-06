@@ -11,6 +11,8 @@ resolver:
   dir: app/api/graphql/resolver
   package: resolver
   filename_template: "{name}_resolver.go"
+autobind:
+  - "github.com/allgor-data/backend/app/dto"
 models:
   ID:
     model:
@@ -23,3 +25,9 @@ models:
       - github.com/99designs/gqlgen/graphql.Int
       - github.com/99designs/gqlgen/graphql.Int64
       - github.com/99designs/gqlgen/graphql.Int32
+  # CreateUserInput:
+  #   model:
+  #     - github.com/allgor-data/backend/app/dto.CreateUserInputDTO
+  # CreateUserOutput:
+  #   model:
+  #     - github.com/allgor-data/backend/app/dto.CreateUserOutputDTO
