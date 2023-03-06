@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/allgor-data/backend/domain/entity"
+	"github.com/allgor-data/backend/app/entity"
 )
 
 type InMemoryUserRepository struct {

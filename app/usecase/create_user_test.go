@@ -3,8 +3,8 @@ package usecase
 import (
 	"testing"
 
-	"github.com/allgor-data/backend/domain/entity"
-	"github.com/allgor-data/backend/domain/repository"
+	"github.com/allgor-data/backend/app/entity"
+	"github.com/allgor-data/backend/app/repository"
 	"gotest.tools/v3/assert"
 )
 

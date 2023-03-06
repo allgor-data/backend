@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"github.com/allgor-data/backend/domain/entity"
-	"github.com/allgor-data/backend/domain/repository"
+	"github.com/allgor-data/backend/app/entity"
+	"github.com/allgor-data/backend/app/repository"
 )
 
 type CreateUserUsecase struct {
