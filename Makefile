@@ -11,6 +11,7 @@ dev:
 
 clean:
 	rm -rf ./build
+	rm -rf ./tmp
 
 generate:
 	go run github.com/99designs/gqlgen generate
