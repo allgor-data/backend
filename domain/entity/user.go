@@ -33,7 +33,12 @@ func NewUser() *User {
 }
 
 func (u *User) Validate() error {
-	err := u.validateEmail()
+	err := u.validateUID()
+	if err != nil {
+		return err
+	}
+
+	err = u.validateEmail()
 	if err != nil {
 		return err
 	}
@@ -76,6 +81,19 @@ func (u *User) SetPassword(password string) error {
 	u.PasswordHash = string(hash)
 
 	return nil
+}
+
+func (u *User) validateUID() error {
+	if u.UID == "" {
+		return errors.New("uid is not set")
+	}
+
+	_, err := uuid.Parse(u.UID)
+	if err != nil {
+		return errors.New("invalid uid")
+	}
+
+	return err
 }
 
 func (u *User) validateEmail() error {
