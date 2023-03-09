@@ -5,12 +5,6 @@ The MVP is currently running at https://www.allgor.com.br/, written using Vue.js
 
 This repository is the backend for the post-MVP version. See [architecture-overview.png](https://github.com/allgor-data/internal-docs/blob/master/assets/architecture-overview.png)
 
-# Contents
-- [How to run](#getting-started-guide)
-  - [Development mode](#development-mode)
-  - [Docker (Production)](#docker-production)
-  - [Building from source](#building-from-source)
-
 ## How to run
 ### Development mode
 #### Requirements
