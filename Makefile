@@ -2,6 +2,7 @@ default: build
 
 install_deps:
 	go get -v ./...
+	[ -f .env ] || cp .env.example .env
 
 build: install_deps
 	go build -o ./build/allgor .
