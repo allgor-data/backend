@@ -19,7 +19,7 @@ func (r *mutationResolver) CreateUser(ctx context.Context, input dto.CreateUserI
 
 	output, err := r.CreateUserUsecase.Execute(&input)
 	if err != nil {
-		log.Err(err).Str("email", input.Email).Msg("failed to create user")
+		log.Err(err).Str("email", input.Email).Msg("createUser mutation failed")
 		return nil, err
 	}
 
