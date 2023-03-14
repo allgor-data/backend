@@ -33,7 +33,7 @@ func TestCreateUser(t *testing.T) {
 	assert.Equal(t, output.LastName, input.LastName)
 }
 
-func TestCreateUser_Validation(t *testing.T) {
+func TestCreateUser_EntityValidation(t *testing.T) {
 	r := repository.NewUserRepositoryInMemory()
 	usecase := NewCreateUserUsecase(r)
 
@@ -64,5 +64,34 @@ func TestCreateUser_ShortPassword(t *testing.T) {
 	output, err := usecase.Execute(input)
 
 	assert.Error(t, err, "password length must be greater or equal than 8")
+	assert.Assert(t, output == nil)
+}
+
+func TestCreateUser_AlreadyExists(t *testing.T) {
+	r := repository.NewUserRepositoryInMemory()
+	usecase := NewCreateUserUsecase(r)
+
+	firstUser := &dto.CreateUserInput{
+		Email:     "johndoe@example.com",
+		FirstName: "John",
+		LastName:  "Doe",
+		Password:  "good_password",
+	}
+
+	output, err := usecase.Execute(firstUser)
+
+	assert.NilError(t, err)
+	assert.Assert(t, output.UID != "")
+
+	secondUser := &dto.CreateUserInput{
+		Email:     "johndoe@example.com",
+		FirstName: "John",
+		LastName:  "Doe",
+		Password:  "good_password",
+	}
+
+	output, err = usecase.Execute(secondUser)
+
+	assert.Error(t, err, "e-mail already registered")
 	assert.Assert(t, output == nil)
 }

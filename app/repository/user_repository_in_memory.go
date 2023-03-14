@@ -20,3 +20,13 @@ func (i *UserRepositoryInMemory) CreateUser(user *entity.User) error {
 	i.users = append(i.users, user)
 	return nil
 }
+
+func (i *UserRepositoryInMemory) FindUserByEmail(email string) (*entity.User, error) {
+	for _, user := range i.users {
+		if user.Email == email {
+			return user, nil
+		}
+	}
+
+	return nil, nil
+}

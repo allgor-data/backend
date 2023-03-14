@@ -1,6 +1,8 @@
 package usecase
 
 import (
+	"errors"
+
 	"github.com/allgor-data/backend/app/dto"
 	"github.com/allgor-data/backend/app/entity"
 	"github.com/allgor-data/backend/app/repository"
@@ -29,6 +31,15 @@ func (c *CreateUserUsecase) Execute(input *dto.CreateUserInput) (*dto.CreateUser
 	err = user.Validate()
 	if err != nil {
 		return nil, err
+	}
+
+	userAlreadyExists, err := c.r.FindUserByEmail(user.Email)
+	if err != nil {
+		return nil, err
+	}
+
+	if userAlreadyExists != nil {
+		return nil, errors.New("e-mail already registered")
 	}
 
 	err = c.r.CreateUser(user)
