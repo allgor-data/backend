@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/mail"
+	"time"
 
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
@@ -23,12 +24,18 @@ type User struct {
 	LastName     string
 	PasswordHash string
 	Role         UserRole
+	CreatedAt    time.Time
+	UpdatedAt    time.Time
 }
 
 func NewUser() *User {
+	timeNow := time.Now().UTC()
+
 	return &User{
-		UID:  uuid.New().String(),
-		Role: UserRoleOperator,
+		UID:       uuid.New().String(),
+		Role:      UserRoleOperator,
+		CreatedAt: timeNow,
+		UpdatedAt: timeNow,
 	}
 }
 

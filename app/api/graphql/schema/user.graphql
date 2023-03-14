@@ -4,6 +4,8 @@ type User {
   firstName: String!
   lastName: String!
   role: String!
+  createdAt: Time!
+  updatedAt: Time!
 }
 
 type Query {
@@ -23,6 +25,8 @@ type CreateUserOutput {
   firstName: String!
   lastName: String!
   role: String!
+  createdAt: Time!
+  updatedAt: Time!
 }
 
 type Mutation {

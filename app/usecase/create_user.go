@@ -42,6 +42,8 @@ func (c *CreateUserUsecase) Execute(input *dto.CreateUserInput) (*dto.CreateUser
 		FirstName: user.FirstName,
 		LastName:  user.LastName,
 		Role:      user.Role,
+		CreatedAt: user.CreatedAt,
+		UpdatedAt: user.UpdatedAt,
 	}
 
 	return output, nil

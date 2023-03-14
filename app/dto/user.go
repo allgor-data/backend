@@ -1,6 +1,10 @@
 package dto
 
-import "github.com/allgor-data/backend/app/entity"
+import (
+	"time"
+
+	"github.com/allgor-data/backend/app/entity"
+)
 
 type CreateUserInput struct {
 	Email     string `json:"email"`
@@ -15,4 +19,6 @@ type CreateUserOutput struct {
 	FirstName string          `json:"firstName"`
 	LastName  string          `json:"lastName"`
 	Role      entity.UserRole `json:"role"`
+	CreatedAt time.Time       `json:"createdAt"`
+	UpdatedAt time.Time       `json:"updatedAt"`
 }
